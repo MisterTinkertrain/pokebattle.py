@@ -1,0 +1,374 @@
+import time, random, string
+
+pkm_name = ('🍀Bulbasaur','🔥Charmander','💧Squirtle','🗿Geodude','⚡Pikachu')
+pkm_type = ('Grass','Fire','Water','Rock','Electric')
+specs = ('Razor leaf🍃','Fire blast💥','Water gun💦','Rock smash💢','Electroshock🌩')
+
+
+while True:
+    pokemonHP = random.choice(range(37,43))
+    enemyHP = random.choice(range(35,41))
+    HPsymb = '◻'
+    print()
+    print('   ====================================')
+    print()
+    print('   Welcome to the Poke-battle simulator')
+    print()
+    
+    '''
+    print('      🔥 beats 🍀 and ⚡')
+    print('      💧 beats 🔥 and 🗿')
+    print('      🍀 beats 🗿 and 💧')
+    print('      🗿 beats 🔥 and ⚡')
+    print('      ⚡ beats 💧 and 🍀')
+    print()
+    '''
+
+    time.sleep(2)
+    print('   Choose your Pokemon :')
+    print()
+    time.sleep(1)
+    print('      1 - Bulbasaur   🍀')
+    print()
+    print('      2 - Charmander  🔥')
+    print()
+    print('      3 - Squirtle    💧')
+    print()
+    print('      4 - Geodude     🗿')
+    print()
+    print('      5 - Pikachu     ⚡')
+    print()
+    time.sleep(1)
+    chs = input('   >>> ')
+    pokemon = pkm_name[int(chs)-1]
+    typ = pkm_type[int(chs)-1]
+    print()
+    time.sleep(1)
+    print('   You chose',pokemon,'('+typ+')')
+    print()
+    print('   ====================================')
+    print()
+    time.sleep(1)
+    print('   Choose your opponent:')
+    print()
+    time.sleep(1)
+    print('      1 - Bulbasaur   🍀')
+    print()
+    print('      2 - Charmander  🔥')
+    print()
+    print('      3 - Squirtle    💧')
+    print()
+    print('      4 - Geodude     🗿')
+    print()
+    print('      5 - Pikachu     ⚡')
+    print()
+    time.sleep(1)
+    while True:
+        chs2 = input('   >>> (r for random): ')
+        if chs2 in ('r','R','ran','random','Random'):
+            enemy_pokemon = random.choice(pkm_name)
+            enemy_typ = pkm_type[pkm_name.index(enemy_pokemon)]
+            break
+        if chs2 in ('1','2','3','4','5'):
+            enemy_pokemon = pkm_name[int(chs2)-1]
+            enemy_typ = pkm_type[int(chs2)-1]
+            break
+        else:
+           print('   Try again')
+    
+    print()
+    time.sleep(1)
+    print('   Your opponent is',enemy_pokemon,'('+enemy_typ+')')
+    print()
+    time.sleep(1)
+   
+    x = pkm_name.index(pokemon)
+    specAtk = specs[x]
+
+    y = pkm_name.index(enemy_pokemon)
+    enemy_specAtk = specs[y]
+   
+    while True:
+        print('   ====================================')
+        print()
+        time.sleep(1)
+        print('   [Enemy',enemy_pokemon+']')
+        print('   |HP:'+HPsymb*enemyHP+' ('+str(enemyHP)+')|')
+        print()
+        print('          ~vs~')
+        print()
+        print('   [Your',pokemon+']')
+        print('   |HP:'+HPsymb*pokemonHP+' ('+str(pokemonHP)+')|')
+        print()
+        
+        
+        print('   ====================================')
+        time.sleep(2)
+        print('   🗡 Attack:')
+        print('   ------------------------------------')
+        print('   1 - Scratch      2 - Bite')
+        print('   3 - Headbutt     4 - '+specAtk)
+        print('   -------------------------------------')
+        time.sleep(1)
+        choice = input('   >>> ')
+        
+        print()
+        print('   ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~')
+        time.sleep(.5)
+        
+        if choice == '1':
+            time.sleep(1)
+            print()
+            print('   Your',pokemon,'used Scratch!')
+            print()
+            dmg = random.choice(range(4,8))
+    
+        elif choice == '2':
+            time.sleep(1)
+            print()
+            print('   Your',pokemon,'used Bite!')
+            print()
+            dmg = random.choice(range(5,11))
+        
+        elif choice == '3':
+            time.sleep(1)
+            print()
+            print('   Your',pokemon,'used Headbutt!')
+            print()
+            dmg = random.choice(range(3,10))
+    
+        elif choice == '4':
+            time.sleep(1)
+            print()
+            time.sleep(0.5)
+            print('   Your',pokemon,'used',specAtk+'!')
+            print()
+           
+            if typ == 'Grass':
+                if enemy_typ in ('Water','Rock'):
+                    time.sleep(1)
+                    print('   Its super effective')
+                    print()
+                    dmg = 12
+                elif enemy_typ in ('Fire','Electric'):
+                    time.sleep(1)
+                    print('   Its not very effective')
+                    print()
+                    dmg = 2
+                else:
+                    print()
+                    dmg = random.choice(range(5,13))
+           
+            elif typ == 'Fire':
+                if enemy_typ in ('Grass','Electric'):
+                    time.sleep(1)
+                    print('   Its super effective')
+                    print()
+                    dmg = 12
+                elif enemy_typ in ('Water','Rock'):
+                    time.sleep(1)
+                    print('   Its not very effective')
+                    print()
+                    dmg = 2
+                else:
+                    print()
+                    dmg = random.choice(range(5,13))
+
+            elif typ == 'Water':
+                if enemy_typ in ('Fire','Rock'):
+                    time.sleep(1)
+                    print('   Its super effective')
+                    print()
+                    dmg = 12
+                elif enemy_typ in ('Grass','Electric'):
+                    time.sleep(1)
+                    print('   Its not very effective')
+                    print()
+                    dmg = 2
+                else:
+                    print()
+                    dmg = random.choice(range(5,13))
+           
+            elif typ == 'Rock':
+                if enemy_typ in ('Electric','Fire'):
+                    time.sleep(1)
+                    print('   Its super effective')
+                    print()
+                    dmg = 12
+                elif enemy_typ in ('Water','Grass'):
+                    time.sleep(1)
+                    print('   Its not very effective')
+                    print()
+                    dmg = 2
+                else:
+                    print()
+                    dmg = random.choice(range(5,13))
+        
+            elif typ == 'Electric':
+                if enemy_typ in ('Water','Grass'):
+                    time.sleep(1)
+                    print('   Its super effective')
+                    print()
+                    dmg = 12
+                elif enemy_typ in ('Rock','Fire'):
+                    time.sleep(1)
+                    print('   Its not very effective')
+                    print()
+                    dmg = 2
+                else:
+                    print()
+                    dmg = random.choice(range(5,13))
+        
+        
+        time.sleep(1.5)
+        print('   Enemy',enemy_pokemon,'took',dmg,'dmg')
+        print()
+        enemyHP -= dmg
+        time.sleep(2)
+        print('   ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~')
+        
+        if enemyHP <= 0:
+            time.sleep(1)
+            print()
+            print('  ',enemy_pokemon,'fainted.')
+            print()
+            time.sleep(1)
+            print('   You are victorious!')
+            print()
+            time.sleep(2)
+            cont = input('   >>> Continue: ')
+            break
+        
+        ene_chs = random.choice(range(1,11))
+        
+        if ene_chs in (1,2):
+            time.sleep(1)
+            print()
+            print('   Enemy',enemy_pokemon,'used Scratch!')
+            print()
+            dmg = random.choice(range(4,9))
+    
+        elif ene_chs in (3,4):
+            time.sleep(1)
+            print()
+            print('   Enemy',enemy_pokemon,'used Bite!')
+            print()
+            dmg = random.choice(range(5,11))
+        
+        elif ene_chs in (5,6):
+            time.sleep(1)
+            print()
+            print('   Enemy',enemy_pokemon,'used Headbutt!')
+            print()
+            dmg = random.choice(range(3,12))
+    
+        elif ene_chs in (7,8,9):
+            time.sleep(1)
+            print()
+            print('   Enemy',enemy_pokemon,'used',enemy_specAtk+'!')
+            print()
+           
+            if enemy_typ == 'Grass':
+                if typ in ('Water','Rock'):
+                    time.sleep(1)
+                    print('   Its super effective')
+                    print()
+                    dmg = 10
+                elif typ in ('Fire','Electric'):
+                    time.sleep(1)
+                    print('   Its not very effective')
+                    print()
+                    dmg = 2
+                else:
+                    print()
+                    dmg = random.choice(range(5,13))
+           
+            elif enemy_typ == 'Fire':
+                if typ in ('Grass', 'Electric'):
+                    time.sleep(1)
+                    print('   Its super effective')
+                    print()
+                    dmg = 10
+                elif typ in ('Water','Rock'):
+                    time.sleep(1)
+                    print('   Its not very effective')
+                    print()
+                    dmg = 2
+                else:
+                    print()
+                    dmg = random.choice(range(5,13))
+
+            elif enemy_typ == 'Water':
+                if typ in ('Fire','Rock'):
+                    time.sleep(1)
+                    print('   Its super effective')
+                    print()
+                    dmg = 10
+                elif typ in ('Grass','Electric'):
+                    time.sleep(1)
+                    print('   Its not very effective')
+                    print()
+                    dmg = 2
+                else:
+                    print()
+                    dmg = random.choice(range(5,13))
+        
+            elif enemy_typ == 'Rock':
+                if typ in ('Fire','Electric'):
+                    time.sleep(1)
+                    print('   Its super effective')
+                    print()
+                    dmg = 10
+                elif typ in ('Grass','Water'):
+                    time.sleep(1)
+                    print('   Its not very effective')
+                    print()
+                    dmg = 2
+                else:
+                    print()
+                    dmg = random.choice(range(5,13))
+            
+            elif enemy_typ == 'Electric':
+                if typ in ('Water','Grass'):
+                    time.sleep(1)
+                    print('   Its super effective')
+                    print()
+                    dmg = 10
+                elif typ in ('Rock','Fire'):
+                    time.sleep(1)
+                    print('   Its not very effective')
+                    print()
+                    dmg = 2
+                else:
+                    print()
+                    dmg = random.choice(range(5,13))
+        
+        
+        else:
+            time.sleep(1)
+            print()
+            print('   Enemy',enemy_pokemon,' missed!')
+            print()
+            dmg = 0       
+        
+        time.sleep(1.5)
+        print('   Your',pokemon,'took',dmg,'dmg')
+        print()
+        pokemonHP -= dmg
+        time.sleep(2)
+        
+        if pokemonHP <= 0:
+            time.sleep(1)
+            print()
+            print('  ',pokemon,'fainted.')
+            print()
+            time.sleep(1)
+            print('   You were defeated.')
+            print()
+            time.sleep(2)
+            cont = input('   >>> Continue: ')
+            break
+        
+        
+           
+        
